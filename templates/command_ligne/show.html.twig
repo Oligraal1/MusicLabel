@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CommandLigne{% endblock %}
+
+{% block body %}
+    <h1>CommandLigne</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ command_ligne.id }}</td>
+            </tr>
+            <tr>
+                <th>Num_command</th>
+                <td>{{ command_ligne.numCommand }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('command_ligne_index') }}">back to list</a>
+
+    <a href="{{ path('command_ligne_edit', {'id': command_ligne.id}) }}">edit</a>
+
+    {{ include('command_ligne/_delete_form.html.twig') }}
+{% endblock %}

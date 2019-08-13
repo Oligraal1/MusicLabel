@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CommandLigne index{% endblock %}
+
+{% block body %}
+    <h1>CommandLigne index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Num_command</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for command_ligne in command_lignes %}
+            <tr>
+                <td>{{ command_ligne.id }}</td>
+                <td>{{ command_ligne.numCommand }}</td>
+                <td>
+                    <a href="{{ path('command_ligne_show', {'id': command_ligne.id}) }}">show</a>
+                    <a href="{{ path('command_ligne_edit', {'id': command_ligne.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('command_ligne_new') }}">Create new</a>
+{% endblock %}
