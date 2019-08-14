@@ -29,7 +29,7 @@
 <ul>
 <!--<li>Nom : { event.artiste_id }}</li>-->
 <li>Type d'événement : {{ event.type }}</li>
-<li>Date : {{ event.date_start }}</li>
+<li>Date : {{ event.dateStart ? event.dateStart|date('d-m-Y') : '' }}</li>
 <li>Lieu : {{ event.lieu }}</li>
 <li>Ville : {{ event.ville }} </li>
 </ul>
