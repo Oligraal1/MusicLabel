@@ -92,4 +92,5 @@ class ArtisteController extends AbstractController
         return $this->redirectToRoute('artiste_index');
     }
     
+    
 }

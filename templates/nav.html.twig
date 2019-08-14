@@ -1,0 +1,30 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href={{ path ('home') }}>Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href={{ path ('event_index') }}>Evenements</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ path ('artiste_index') }}">Artistes</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ path ('actualite_index') }}">Actualités</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ path ('produit_index') }}">Produit</a>
+    <ul class="dropdown">
+    <div dropdown-menu>
+    <li class="dropdown-item nav-item">
+    <a class="nav-link" href="{{ path ('support_index') }}">Support</a>
+  </li>
+  <li class="dropdown-item nav-item">
+    <a class="nav-link" href="{{ path ('streaming_index') }}">Streaming</a>
+  </li>
+  </div>
+  </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ path ('user_index') }}">Connection</a>
+  </li>
+</ul>

@@ -1,0 +1,38 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<h2>Bienvenue sur My Music Label</h2>
+<p>Voici les artistes de notre Label : </p>
+<table class="table table-bordered table-dark">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Presentation</th>
+                <th>Style</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for artist in artiste %}
+            <tr>  
+                <td><a href={{ path('artiste_show', {'id':artist.id}) }} >{{ artist.nom }}<a></td>
+                <td>{{ artist.presentation }}</td>
+                <td>{{ artist.style }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+<h3>Les événements à venir</h3>
+{% for event in events %}
+<ul>
+<!--<li>Nom : { event.artiste_id }}</li>-->
+<li>Type d'événement : {{ event.type }}</li>
+<li>Date : {{ event.date_start }}</li>
+<li>Lieu : {{ event.lieu }}</li>
+<li>Ville : {{ event.ville }} </li>
+</ul>
+
+{% endfor %}
+{% endblock %}
