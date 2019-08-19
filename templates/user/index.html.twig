@@ -3,22 +3,20 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-    <h2>User index</h2>
+    <h1>User index</h1>
 
-    <table class="table table-bordered table-hover">
-        <thead class="thead-dark">
+    <table class="table">
+        <thead>
             <tr>
                 <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
                 <th>Nom</th>
                 <th>Prenom</th>
-                <th>Pseudo</th>
-                <th>Password</th>
-                <th>Mail</th>
                 <th>Adresse</th>
                 <th>Ville</th>
                 <th>Phone</th>
-                <th>Role</th>
-                <th>Collection</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -26,16 +24,14 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.password }}</td>
                 <td>{{ user.nom }}</td>
                 <td>{{ user.prenom }}</td>
-                <td>{{ user.pseudo }}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.mail }}</td>
                 <td>{{ user.adresse }}</td>
                 <td>{{ user.ville }}</td>
                 <td>{{ user.phone }}</td>
-                <td>{{ user.role }}</td>
-                <td>{{ user.collection }}</td>
                 <td>
                     <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
@@ -43,7 +39,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="12">no records found</td>
+                <td colspan="10">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
