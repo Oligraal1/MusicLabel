@@ -48,10 +48,16 @@ class Artiste
      */
     private $produits;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Actualite", mappedBy="id_artiste")
+     */
+    private $actualites;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
         $this->produits = new ArrayCollection();
+        $this->actualites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -170,5 +176,36 @@ class Artiste
     }
     public function __toString(){
         return 'nom '.$this->nom;
+    }
+
+    /**
+     * @return Collection|Actualite[]
+     */
+    public function getActualites(): Collection
+    {
+        return $this->actualites;
+    }
+
+    public function addActualite(Actualite $actualite): self
+    {
+        if (!$this->actualites->contains($actualite)) {
+            $this->actualites[] = $actualite;
+            $actualite->setIdArtiste($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActualite(Actualite $actualite): self
+    {
+        if ($this->actualites->contains($actualite)) {
+            $this->actualites->removeElement($actualite);
+            // set the owning side to null (unless already changed)
+            if ($actualite->getIdArtiste() === $this) {
+                $actualite->setIdArtiste(null);
+            }
+        }
+
+        return $this;
     }
 }

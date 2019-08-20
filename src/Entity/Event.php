@@ -55,6 +55,7 @@ class Event
      * @ORM\ManyToOne(targetEntity="App\Entity\Artiste", inversedBy="events")
      */
     private $artiste_id;
+    
 
     public function getId(): ?int
     {

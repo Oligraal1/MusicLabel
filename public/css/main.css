@@ -23,8 +23,15 @@
 }
 
 h1 {
+  margin: 25px auto;
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  margin: 25px auto;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 form .row {
@@ -62,5 +69,20 @@ form .button .btn {
   margin: 12px 0;
   padding: 10px 5px;
   border-radius: 10px;
+}
+
+nav {
+  margin: 25px auto;
+  padding-bottom: 15px;
+}
+
+footer {
+  margin: 100px auto;
+  padding-top: 50px;
+}
+
+footer p {
+  text-align: right;
+  margin: 50px 0 0;
 }
 /*# sourceMappingURL=main.css.map */

@@ -15,7 +15,8 @@ class ActualiteType extends AbstractType
             ->add('thematique')
             ->add('contenu')
             ->add('date_publication')
-            ->add('id_user')
+           // ->add('id_user')
+            ->add('id_artiste')
         ;
     }
 

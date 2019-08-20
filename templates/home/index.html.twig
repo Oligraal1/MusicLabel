@@ -1,4 +1,3 @@
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Home{% endblock %}
@@ -6,33 +5,55 @@
 {% block body %}
 <h2>Bienvenue sur My Music Label</h2>
 <p>Voici les artistes de notre Label : </p>
-<table class="table table-bordered table-dark">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Presentation</th>
-                <th>Style</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for artist in artiste %}
-            <tr>  
-                <td><a href={{ path('artiste_show', {'id':artist.id}) }} >{{ artist.nom }}<a></td>
-                <td>{{ artist.presentation }}</td>
-                <td>{{ artist.style }}</td>
-                </tr>
-                {% endfor %}
-                </tbody>
-                </table>
-<h3>Les événements à venir</h3>
-{% for event in events %}
-<ul>
-<!--<li>Nom : { event.artiste_id }}</li>-->
-<li>Type d'événement : {{ event.type }}</li>
-<li>Date : {{ event.dateStart ? event.dateStart|date('d-m-Y') : '' }}</li>
-<li>Lieu : {{ event.lieu }}</li>
-<li>Ville : {{ event.ville }} </li>
-</ul>
 
-{% endfor %}
+{{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button>Find results</button>
+    {{ form_end(form) }}
+
+
+<table class="table table-bordered table-dark">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Presentation</th>
+            <th>Style</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for artist in artiste %}
+        <tr>
+            <td><a href={{ path('artiste_show', {'id':artist.id}) }}>{{ artist.nom }}<a></td>
+            <td>{{ artist.presentation }}</td>
+            <td>{{ artist.style }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<section class="d-flex flex-row">
+    <article class="p-2 flex-grow-1 bd-highlight">
+        <h3>Actualités</h3>
+        {% for actualite in actualites %}
+        <ul class="list-group">
+            <li class="list-group-item active">{{ actualite.idArtiste.nom }}</li>
+            <li class="list-group-item">{{ actualite.datePublication ? actualite.datePublication|date('d-m-Y') : '' }}
+            </li>
+            <li class="list-group-item">{{ actualite.thematique }}</li>
+            <li class="list-group-item">{{ actualite.contenu }}</li>
+        </ul>
+        {% endfor %}
+    </article>
+    <aside class="p-2 bd-highlight">
+        <h3>Les événements à venir</h3>
+        {% for event in events %}
+        <ul>
+            <li>{{ event.artisteId.nom }}</li>
+            <li>Type d'événement : {{ event.type }}</li>
+            <li>Date : {{ event.dateStart ? event.dateStart|date('d-m-Y') : '' }}</li>
+            <li>Lieu : {{ event.lieu }}</li>
+            <li>Ville : {{ event.ville }} </li>
+        </ul>
+        {% endfor %}
+    </aside>
+</section>
 {% endblock %}

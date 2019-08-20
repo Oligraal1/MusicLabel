@@ -3,12 +3,12 @@
 {% block title %}Actualite index{% endblock %}
 
 {% block body %}
-    <h1>Actualite index</h1>
+    <h2>Actualite index</h2>
 
-    <table class="table">
-        <thead>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
             <tr>
-                <th>Id</th>
+                <th>Artiste</th>
                 <th>Thematique</th>
                 <th>Contenu</th>
                 <th>Date_publication</th>
@@ -18,10 +18,10 @@
         <tbody>
         {% for actualite in actualites %}
             <tr>
-                <td>{{ actualite.id }}</td>
+                <td class="font-weight-bold">{{ actualite.idArtiste.nom }}</td>
                 <td>{{ actualite.thematique }}</td>
                 <td>{{ actualite.contenu }}</td>
-                <td>{{ actualite.datePublication ? actualite.datePublication|date('Y-m-d') : '' }}</td>
+                <td>{{ actualite.datePublication ? actualite.datePublication|date('d-m-Y') : '' }}</td>
                 <td>
                     <a href="{{ path('actualite_show', {'id': actualite.id}) }}">show</a>
                     <a href="{{ path('actualite_edit', {'id': actualite.id}) }}">edit</a>

@@ -38,6 +38,11 @@ class Actualite
      */
     private $id_user;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Artiste", inversedBy="actualites")
+     */
+    private $id_artiste;
+
     public function __construct()
     {
         $this->id_user = new ArrayCollection();
@@ -106,6 +111,18 @@ class Actualite
         if ($this->id_user->contains($idUser)) {
             $this->id_user->removeElement($idUser);
         }
+
+        return $this;
+    }
+
+    public function getIdArtiste(): ?Artiste
+    {
+        return $this->id_artiste;
+    }
+
+    public function setIdArtiste(?Artiste $id_artiste): self
+    {
+        $this->id_artiste = $id_artiste;
 
         return $this;
     }
