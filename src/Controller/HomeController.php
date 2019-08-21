@@ -14,13 +14,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+ 
 
 class HomeController extends AbstractController
 {
     /**
      * @Route("/home", name="home")
      */
-    public function index()
+    public function index(\App\Hello\HelloWorld $h)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -36,7 +37,7 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             "artiste" => $artistes, 'events'=>$events,
-            'actualites'=>$actualites,
+            'actualites'=>$actualites,"message"=>$h->yoUp()
         ]);
 
     }

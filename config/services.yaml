@@ -25,4 +25,14 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Hello\HelloWorld:
+        arguments:
+            $p: 'Olivia'
+            $m: '@App\Hello\Magnify' 
+
+    App\Local\Localisation:
+        arguments:
+            $url: 'https://api-adresse.data.gouv.fr/search/?q='
+                    
     Symfony\Bridge\Doctrine\Security\RememberMe\DoctrineTokenProvider: ~
+     

@@ -3,14 +3,14 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-<h2>Bienvenue sur My Music Label</h2>
+<h2>{{message}}, Bienvenue sur My Music Label</h2>
 <p>Voici les artistes de notre Label : </p>
+
 
 {{ form_start(form) }}
         {{ form_widget(form) }}
         <button>Find results</button>
     {{ form_end(form) }}
-
 
 <table class="table table-bordered table-dark">
     <thead>

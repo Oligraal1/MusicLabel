@@ -19,10 +19,12 @@ class EventController extends AbstractController
      * @Route("/", name="event_index", methods={"GET"})
      */
     public function index(EventRepository $eventRepository): Response
-    {
+    {   
+       // $ville= $h->getVille();
         return $this->render('event/index.html.twig', [
-            'events' => $eventRepository->findAll(),
+            'events' => $eventRepository->findAll(), 
         ]);
+
     }
 
     /**
@@ -51,10 +53,11 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}", name="event_show", methods={"GET"})
      */
-    public function show(Event $event): Response
+    public function show(Event $event, \App\Local\Localisation $h): Response
     {
         return $this->render('event/show.html.twig', [
             'event' => $event,
+            'ville'=> $h->oneCity($event->getVille()),
         ]);
     }
 

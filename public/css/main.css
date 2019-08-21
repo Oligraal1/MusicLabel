@@ -34,6 +34,10 @@ h2 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+li {
+  list-style: none;
+}
+
 form .row {
   margin: 0 50px;
 }
@@ -74,6 +78,10 @@ form .button .btn {
 nav {
   margin: 25px auto;
   padding-bottom: 15px;
+}
+
+#mapid {
+  height: 180px;
 }
 
 footer {
