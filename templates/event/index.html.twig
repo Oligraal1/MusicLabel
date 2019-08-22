@@ -4,8 +4,10 @@
 
 {% block body %}
     <h2>Event index</h2>
+    
+    {{ asset ('./image/concertP.jpg') | figure('That\'s my show', '1200px','600px','slam dans le public') | raw }}
 
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover p-3 m-4">
         <thead class="thead-dark">
             <tr>
                 <th>Artiste</th>

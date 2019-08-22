@@ -35,4 +35,10 @@
     <a href="{{ path('artiste_edit', {'id': artiste.id}) }}">edit</a>
 
     {{ include('artiste/_delete_form.html.twig') }}
+
+     <div id="style">
+    </div>
+
+    <script defer src='{{ asset('./js/main.js')}}'>
+    
 {% endblock %}

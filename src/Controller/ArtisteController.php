@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * @Route("/artiste")
@@ -90,6 +91,21 @@ class ArtisteController extends AbstractController
         }
 
         return $this->redirectToRoute('artiste_index');
+    }
+
+    /**
+     * @Route ("/artiste/{id}/sameStyle")
+     *
+     * @param Artiste $a
+     * @return void
+     */
+    public function sameStyle(Artiste $artiste)
+    {
+        $artiste = new Artiste;
+        $artiste  = $this->getDoctrine()->getRepository(Artist::class)->findByStyle(['style'=>$this->getStyle()]);
+        var_dump($artiste);
+        return new JSONResponse($artiste);
+        
     }
     
     

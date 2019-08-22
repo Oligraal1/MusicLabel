@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
@@ -56,6 +58,15 @@ class Event
      */
     private $artiste_id;
     
+    /**
+     * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 400,
+     *     minHeight = 200,
+     *     maxHeight = 400
+     * )
+     */
+    protected $image;
 
     public function getId(): ?int
     {
@@ -156,5 +167,14 @@ class Event
         $this->artiste_id = $artiste_id;
 
         return $this;
+    }
+    public function setImage(File $file = null)
+    {
+        $this->headshot = $file;
+    }
+
+    public function getImage()
+    {
+        return $this->headshot;
     }
 }

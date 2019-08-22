@@ -33,6 +33,9 @@ services:
     App\Local\Localisation:
         arguments:
             $url: 'https://api-adresse.data.gouv.fr/search/?q='
+
+    App\Twig\HtmlExtension:
+        tags: [twig.extension]
                     
     Symfony\Bridge\Doctrine\Security\RememberMe\DoctrineTokenProvider: ~
      

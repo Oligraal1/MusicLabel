@@ -84,6 +84,11 @@ nav {
   height: 180px;
 }
 
+img {
+  margin: 25px auto;
+  padding: 15px;
+}
+
 footer {
   margin: 100px auto;
   padding-top: 50px;
@@ -92,5 +97,9 @@ footer {
 footer p {
   text-align: right;
   margin: 50px 0 0;
+}
+
+footer p i {
+  color: #750c39;
 }
 /*# sourceMappingURL=main.css.map */

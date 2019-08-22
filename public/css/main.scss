@@ -67,11 +67,18 @@ nav {
     padding-bottom: 15px;
 }
 #mapid { height: 180px; }
+img {
+    margin: 25px auto;
+    padding:15px;
+}
 footer {
     margin:100px auto;
     padding-top:50px;
     p {
         text-align:right;
         margin:50px 0 0 ;
+        i{
+            color:#750c39;
+        }
     }
 }

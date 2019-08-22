@@ -3,16 +3,16 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-<h2>{{message}}, Bienvenue sur My Music Label</h2>
-<p>Voici les artistes de notre Label : </p>
-
+  {{message}}
+<h2>Bienvenue sur My Music Label</h2>
+<div class='row'>
+    <section class="col-lg-8">
 
 {{ form_start(form) }}
         {{ form_widget(form) }}
-        <button>Find results</button>
     {{ form_end(form) }}
 
-<table class="table table-bordered table-dark">
+{# <table class="table table-bordered table-dark col-lg-12">
     <thead>
         <tr>
             <th>Nom</th>
@@ -29,13 +29,13 @@
         </tr>
         {% endfor %}
     </tbody>
-</table>
-<section class="d-flex flex-row">
-    <article class="p-2 flex-grow-1 bd-highlight">
+</table> #}
+
+    <article class="col-lg-12">
         <h3>Actualités</h3>
         {% for actualite in actualites %}
         <ul class="list-group">
-            <li class="list-group-item active">{{ actualite.idArtiste.nom }}</li>
+            <li class="list-group-item active bg-secondary">{{ actualite.idArtiste.nom }}</li>
             <li class="list-group-item">{{ actualite.datePublication ? actualite.datePublication|date('d-m-Y') : '' }}
             </li>
             <li class="list-group-item">{{ actualite.thematique }}</li>
@@ -43,17 +43,25 @@
         </ul>
         {% endfor %}
     </article>
-    <aside class="p-2 bd-highlight">
+    
+</section>
+
+        <div class="col-lg-4">
+            <div class="row">
+    <aside class="col-lg-12">
         <h3>Les événements à venir</h3>
+        {{ asset ('./image/concert.webp') | figure('', '300px','150px','concert') | raw }}
         {% for event in events %}
         <ul>
-            <li>{{ event.artisteId.nom }}</li>
-            <li>Type d'événement : {{ event.type }}</li>
-            <li>Date : {{ event.dateStart ? event.dateStart|date('d-m-Y') : '' }}</li>
-            <li>Lieu : {{ event.lieu }}</li>
-            <li>Ville : {{ event.ville }} </li>
+            <li><strong>{{ event.artisteId.nom }}</strong></li>
+            <li><strong>Type d'événement : </strong>{{ event.type }}</li>
+            <li><strong>Date : </strong>{{ event.dateStart ? event.dateStart|date('d-m-Y') : '' }}</li>
+            <li><strong>Lieu : </strong>{{ event.lieu }}</li>
+            <li><strong>Ville : </strong>{{ event.ville }} </li>
         </ul>
         {% endfor %}
     </aside>
-</section>
+    </div>
+    </div>
+</div>
 {% endblock %}
