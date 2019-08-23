@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\VarDumper\VarDumper;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/artiste")
@@ -94,17 +95,20 @@ class ArtisteController extends AbstractController
     }
 
     /**
-     * @Route ("/artiste/{id}/sameStyle")
+     * @Route ("/artiste/{id}/sameStyle", name="sameStyle")
      *
      * @param Artiste $a
      * @return void
      */
-    public function sameStyle(Artiste $artiste)
+    public function sameStyle(Artiste $artiste, ArtisteRepository $rep)
     {
-        $artiste = new Artiste;
-        $artiste  = $this->getDoctrine()->getRepository(Artist::class)->findByStyle(['style'=>$this->getStyle()]);
-        var_dump($artiste);
-        return new JSONResponse($artiste);
+        // $artiste  = $this->getDoctrine()->getRepository(Artist::class)->findByStyle(['style'=>$this->getStyle()]);
+        $same = $rep->findBy(['style'=>$artiste->getStyle()]);
+        $filter_artist= array_map(function($item){
+            return ['id'=>$item->getId(),
+            'nom'=>$item->getNom(),
+            'href'=>$this->generateUrl('artiste_show', ['id'=>$item->getId()])];}, $same);
+        return new JSONResponse($filter_artist);
         
     }
     

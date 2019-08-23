@@ -1,6 +1,8 @@
 var style = document.querySelector('#style');
 
-fetch('/artiste/{id}/sameStyle')
+let id = 1;
+
+fetch(`./api/artiste/${id}/sameStyle`)
     .then(function (response) {
         return response.json();
     })

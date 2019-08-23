@@ -3,42 +3,73 @@
 {% block title %}Artiste{% endblock %}
 
 {% block body %}
-    <h1>Artiste</h1>
+<h1>Artiste</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ artiste.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ artiste.nom }}</td>
-            </tr>
-            <tr>
-                <th>Pays</th>
-                <td>{{ artiste.pays }}</td>
-            </tr>
-            <tr>
-                <th>Presentation</th>
-                <td>{{ artiste.presentation }}</td>
-            </tr>
-            <tr>
-                <th>Style</th>
-                <td>{{ artiste.style }}</td>
-            </tr>
-        </tbody>
-    </table>
+<table class="table">
+    <tbody>
+        
+        <tr>
+            <th>Nom</th>
+            <td>{{ artiste.nom }}</td>
+        </tr>
+        <tr>
+            <th>Pays</th>
+            <td>{{ artiste.pays }}</td>
+        </tr>
+        <tr>
+            <th>Presentation</th>
+            <td>{{ artiste.presentation }}</td>
+        </tr>
+        <tr>
+            <th>Style</th>
+            <td>{{ artiste.style }}</td>
+        </tr>
+    </tbody>
+</table>
 
-    <a href="{{ path('artiste_index') }}">back to list</a>
+<a href="{{ path('artiste_index') }}">back to list</a>
 
-    <a href="{{ path('artiste_edit', {'id': artiste.id}) }}">edit</a>
+<a href="{{ path('artiste_edit', {'id': artiste.id}) }}">edit</a>
 
-    {{ include('artiste/_delete_form.html.twig') }}
+{{ include('artiste/_delete_form.html.twig') }}
 
-     <div id="style">
-    </div>
 
-    <script defer src='{{ asset('./js/main.js')}}'>
-    
+<button id="showSame">Voir les artistes similaires</button>
+<div id="style">
+</div>
+
+<script>
+    {# var style = document.querySelector('#style'); #}
+    var style =$("#style");
+    //var showSame = document.querySelector('#showSame');
+
+    function OnClickShow() 
+    {
+        fetch("{{ path('sameStyle',{'id':artiste.id}) }}")
+            .then(function (response)
+            {
+                return response.json();
+            })
+            .then(function (data) 
+            {
+                    console.log(data);
+                    var p = $('<h4>').html('Voici les artistes du même style :');
+                    style.append(p);
+                    var ul = $('<ul>');
+                     style.append(ul);                  
+                        
+                    for(var artiste of data)
+                    {    
+                        var li = $('<li>');
+                        ul.append(li);
+                    var a = $('<a>');
+                        li.append(a);
+                        a.html(artiste.nom).attr('href', artiste.href);
+                        console.log(artiste.nom)
+                    } 
+            })
+        }
+    $("#showSame").on("click", OnClickShow);
+</script>
+
 {% endblock %}
