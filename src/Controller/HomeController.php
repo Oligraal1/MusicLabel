@@ -51,7 +51,9 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
             "artiste" => $artistes, 'events'=>$events,
             'actualites'=>$actualites,"message"=>$h->yoUp(),
-            'form'=>$form->createView()
+            'form'=>$form->createView(),
+            'mainNavHome'=>true,
+             'title'=>'Accueil'
         ]);
 
     }

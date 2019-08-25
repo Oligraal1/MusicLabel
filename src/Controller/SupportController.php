@@ -39,6 +39,7 @@ class SupportController extends AbstractController
             $entityManager->persist($support);
             $entityManager->flush();
 
+            $request->getSession()->getFlashBag()->add('notice', 'Compte bien enregistrée.');
             return $this->redirectToRoute('support_index');
         }
 

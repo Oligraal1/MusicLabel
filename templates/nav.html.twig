@@ -1,36 +1,58 @@
-<nav>
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" href={{ path ('home') }}>Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href={{ path ('event_index') }}>Evenements</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ path ('artiste_index') }}">Artistes</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ path ('actualite_index') }}">Actualités</a>
-  </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{{ path ('produit_index') }}">Produit</a>
-    <ul class="dropdown-menu">
-   
-    <li class="dropdown-item nav-item">
-    
-    <a class="nav-link" href="{{ path ('support_index') }}">Support</a>
-  </li>
-  <li class="dropdown-item nav-item">
-    <a class="nav-link" href="{{ path ('streaming_index') }}">Streaming</a>
-  </li>
+<nav id="main-nav" >
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" href={{ path ('home') }}>Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href={{ path ('event_index') }}>Evenements</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ path ('artiste_index') }}">Artistes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ path ('actualite_index') }}">Actualités</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        href="{{ path ('produit_index') }}">Produit</a>
+      <ul class="dropdown-menu">
+
+        <li class="dropdown-item nav-item">
+
+          <a class="nav-link" href="{{ path ('support_index') }}">Support</a>
+        </li>
+        <li class="dropdown-item nav-item">
+          <a class="nav-link" href="{{ path ('streaming_index') }}">Streaming</a>
+        </li>
+
+      </ul>
+    </li>
   
+
+    {% if is_granted('ROLE_USER') %}
+    <li class="nav-item {% if mainNavMember is defined %}active{% endif %}">
+      <a class="nav-link" href="{{path('member_index')}}">Espace membre</a>
+    </li>
+    {% endif %}
+    {% if is_granted('ROLE_SUPER_ADMIN') %}
+    <li class="nav-item {% if mainNavAdmin is defined %}active{% endif %}">
+      <a class="nav-link" href="{{path('admin_index')}}">Espace admin</a>
+    </li>
+    {% endif %}
+
+    <ul class="navbar-nav ml-auto">
+      {% if is_granted('ROLE_USER') %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{path('app_logout')}}">Déconnexion</a>
+      </li> 
+      {% else %}
+      <li class="nav-item {% if mainNavLogin is defined %}active{% endif %}">
+        <a class="nav-link" href="{{path('app_login')}}">Connexion</a>
+      </li>
+      <li class="nav-item {% if mainNavRegistration is defined %}active{% endif %}">
+        <a class="nav-link" href="{{path('app_register')}}">Inscription</a>
+      </li>
+      {% endif %}
+    </ul>
   </ul>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ path ('app_login') }}">Connection</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ path ('app_register') }}">Inscription</a>
-  </li>
-</ul>
 </nav>

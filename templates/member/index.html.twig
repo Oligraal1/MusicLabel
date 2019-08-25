@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace Membre{% endblock %}
+
+{% block body %}
+<h2>Bienvenue dans l'espace Membre</h2>
+
+<p>Mettez à jour vos informations personnelles :</p>
+
+<a href="{{ path('member_edit', {'id': member.id}) }}">Mes informations</a>
+
+{{ include('member/_form.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}

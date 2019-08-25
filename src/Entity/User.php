@@ -218,6 +218,15 @@ class User implements UserInterface
 
         return $this;
     }
+    function getIsActive() 
+    {
+        return $this->isActive;
+    }
+    function setIsActive($isActive) 
+    {
+        $this->isActive = $isActive;
+    }
+    
      /**
      * @return Collection|Streaming[]
      */

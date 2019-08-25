@@ -1,0 +1,39 @@
+{{ form_start(formMember) }}
+<div class="my-custom-class-for-errors">
+    {{ form_errors(formMember) }}
+</div>
+
+<div class="row">
+
+    </div>
+    <div class="form-group col-md-10">
+        {{ form_row(formMember.email) }}
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_row(formMember.roles) }}
+    </div>
+     <div class="form-group col-md-5">
+        {{ form_row(formMember.password) }}
+    </div>
+    <div class="form-group col-md-10">
+        {{ form_row(formMember.nom) }}
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_row(formMember.prenom) }}
+    </div>
+    <div class="form-group col-md-5">
+        {{ form_row(formMember.adresse) }}
+    </div>
+    <div class="form-group col-md-10">
+        {{ form_row(formMember.ville) }}
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_row(formMember.phone) }}
+    </div>
+  
+
+</div>
+<div class="button">
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button></div>
+
+{{ form_end(formMember) }}

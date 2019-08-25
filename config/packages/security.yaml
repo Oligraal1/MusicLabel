@@ -37,7 +37,7 @@ security:
                 # by default, the feature is enabled by checking a
                 # checkbox in the login form (see below), uncomment the
                 # following line to always enable it.
-                #always_remember_me: true
+                always_remember_me: true
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -48,9 +48,9 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
-    role_hierarchy: {ROLE_SUPERADMIN:[ROLE_ADMIN,ROLE_ALLOWED_TO_SWITCH]
-                    ROLE_ADMIN:[ROLE_CLIENT]
-                    ROLE_CLIENT:[ROLE_USER]
-                    ROLE_MODERATEUR:[ROLE_CLIENT]}
+         - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/member, roles: ROLE_USER }
+         - { path: ^/admin/member, roles: ROLE_SUPER_ADMIN }
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]

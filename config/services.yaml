@@ -29,7 +29,7 @@ services:
     # please note that last definitions always *replace* previous ones
     App\Hello\HelloWorld:
         arguments:
-            $p: 'Olivia'
+            $p: 'Toi !'
             $m: '@App\Hello\Magnify' 
 
     App\Local\Localisation:

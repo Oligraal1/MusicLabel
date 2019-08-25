@@ -14,7 +14,7 @@ class HelloWorld
     }
     function yo()
     {
-        return "Yo ".$this->prenom;
+        return "Salut, ".$this->prenom;
     }
     function yoUp()
     {

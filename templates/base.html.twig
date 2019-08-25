@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}
+     {% if title is defined %}{{title}}{% else %}Title{% endif %} | My Music Label
+    {% endblock %}</title>
 
     {% block head_css %}
     <!-- Copy CSS from https://getbootstrap.com/docs/4.1/getting-started/introduction/#css -->

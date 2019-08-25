@@ -3,7 +3,7 @@
 {% block title %}Actualite index{% endblock %}
 
 {% block body %}
-    <h2>Actualite index</h2>
+    <h2>Actualite</h2>
 
     <table class="table table-bordered table-hover">
         <thead class="thead-dark">
@@ -23,8 +23,10 @@
                 <td>{{ actualite.contenu }}</td>
                 <td>{{ actualite.datePublication ? actualite.datePublication|date('d-m-Y') : '' }}</td>
                 <td>
-                    <a href="{{ path('actualite_show', {'id': actualite.id}) }}">show</a>
+                    <a href="{{ path('actualite_show', {'id': actualite.id}) }}">Voir l'actualité</a>
+                  {% if is_granted('ROLE_SUPER_ADMIN') %}
                     <a href="{{ path('actualite_edit', {'id': actualite.id}) }}">edit</a>
+               {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -34,6 +36,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+ {% if is_granted('ROLE_SUPER_ADMIN') %}
     <a href="{{ path('actualite_new') }}">Create new</a>
+     {% endif %}
 {% endblock %}

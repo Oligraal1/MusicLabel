@@ -13,11 +13,10 @@
                 <th>Artiste</th>
                 <th>Type</th>
                 <th>Date_start</th>
-                <th>Date_end</th>
+                
                 <th>Lieu</th>
                 <th>Ville</th>
-                <th>Description</th>
-                <th>Prix</th>
+                
                 <th>actions</th>
             </tr>
         </thead>
@@ -27,14 +26,16 @@
                 <td class="font-weight-bold">{{ event.artisteId.nom }}</td>
                 <td>{{ event.type }}</td>
                 <td>{{ event.dateStart ? event.dateStart|date('d-m-Y') : '' }}</td>
-                <td>{{ event.dateEnd ? event.dateEnd|date('d-m-Y') : '' }}</td>
+            
                 <td>{{ event.lieu }}</td>
                 <td>{{ event.ville }}</td>
-                <td>{{ event.description }}</td>
-                <td>{{ event.prix }}</td>
+               
+               
                 <td>
-                    <a href="{{ path('event_show', {'id': event.id}) }}">show</a>
+                    <a classe= "btn btn-secondary" href="{{ path('event_show', {'id': event.id}) }}">Voir la fiche de l'événement</a>
+                   {% if is_granted('ROLE_SUPER_ADMIN') %}
                     <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
+                {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -44,7 +45,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+{% if is_granted('ROLE_SUPER_ADMIN') %}
     <a href="{{ path('event_new') }}">Create new</a>
-    
+     {% endif %}
 {% endblock %}
