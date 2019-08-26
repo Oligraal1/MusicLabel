@@ -7,8 +7,13 @@
 
 <p>Mettez à jour vos informations personnelles :</p>
 
-<a href="{{ path('member_edit', {'id': member.id}) }}">Mes informations</a>
+{# {{ dump(member) }} #}
 
-{{ include('member/_form.html.twig', {'button_label': 'Update'}) }}
+
+<a href="{{ path('member_show', {'id': id}) }}">Voir mes informations</a>
+
+
+
+
 
 {% endblock %}

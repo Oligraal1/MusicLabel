@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Event;
 use App\Form\EventType;
+use App\Entity\User;
 use App\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +21,6 @@ class EventController extends AbstractController
      */
     public function index(EventRepository $eventRepository): Response
     {   
-       // $ville= $h->getVille();
         return $this->render('event/index.html.twig', [
             'events' => $eventRepository->findAll(), 
         ]);
@@ -55,9 +55,12 @@ class EventController extends AbstractController
      */
     public function show(Event $event, \App\Local\Localisation $h): Response
     {
+        
+        
         return $this->render('event/show.html.twig', [
             'event' => $event,
             'ville'=> $h->oneCity($event->getVille()),
+            
         ]);
     }
 
@@ -94,4 +97,6 @@ class EventController extends AbstractController
 
         return $this->redirectToRoute('event_index');
     }
+
+    
 }

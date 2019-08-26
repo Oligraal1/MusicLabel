@@ -32,9 +32,9 @@
                
                
                 <td>
-                    <a classe= "btn btn-secondary" href="{{ path('event_show', {'id': event.id}) }}">Voir la fiche de l'événement</a>
+                    <a class= "btn btn-secondary" href="{{ path('event_show', {'id': event.id}) }}">Voir la fiche de l'événement</a>
                    {% if is_granted('ROLE_SUPER_ADMIN') %}
-                    <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
+                    <a class= "btn btn-secondary" href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
                 {% endif %}
                 </td>
             </tr>
@@ -46,6 +46,7 @@
         </tbody>
     </table>
 {% if is_granted('ROLE_SUPER_ADMIN') %}
-    <a href="{{ path('event_new') }}">Create new</a>
+    <a class= "btn btn-secondary" href="{{ path('event_new') }}">Create new</a>
+    
      {% endif %}
 {% endblock %}

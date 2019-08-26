@@ -24,22 +24,30 @@ class MemberController extends AbstractController {
      */
     public function index(UserRepository $userRepository): Response
     {
+        $id=$this->getUser()->getId();
+        
         return $this->render('member/index.html.twig', [
-            'member' => $userRepository->findAll(),
+            'id' => $id,
+        ]);
+    }
+    /**
+     * @Route("/{id}", name="member_show", methods={"GET"})
+     */
+    public function show(User $user): Response
+    {
+        return $this->render('member/show.html.twig', [
+            'member' => $user,
         ]);
     }
     /**
      * @Route("/{id}/edit", name="member_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, User $user ) 
+    public function edit(Request $request, User $user ):Response 
     {
-        
-        $user = new User();
+         
         $form = $this->createForm(MemberType::class, $user);
         $form->handleRequest($request);
         
-         
-    
             if ($form->isSubmitted() && $form->isValid()) 
             {
                 $entityManager = $this->getDoctrine()->getManager();
@@ -48,13 +56,15 @@ class MemberController extends AbstractController {
     
                 return $this->redirectToRoute('member_index');
             }
-    
+            
+    //var_dump($user);
+    $userConnect=$user->getId();
             return $this->render('member/edit.html.twig',
             [
                 'member' => $user,
                 'formMember' => $form->createView(),
                 'mainNavMember'=>true, 
-                'title'=>'Espace Membre'
+                'title'=>'Espace Membre',
             ]);
     }
      /**

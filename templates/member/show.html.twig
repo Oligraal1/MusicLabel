@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace membre{% endblock %}
+
+{% block body %}
+    <h1>Mes informations personnelles</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ member.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ member.email }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ member.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ member.prenom}}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ member.adresse}}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ member.ville}}</td>
+            </tr>
+            <tr>
+                <th>Role</th>
+                {% for role in member.roles %}
+                <td>{{ role}}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+
+    
+
+    <a href="{{ path('member_edit', {'id': member.id}) }}">Modifier mes infos</a>
+    <a class="btn btn-secondary" href="{{ path('member_index') }}">back to list</a>
+
+    {# {{ include('member/_delete_form.html.twig') }} #}
+{% endblock %}

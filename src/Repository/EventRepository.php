@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Event;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -18,7 +19,15 @@ class EventRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Event::class);
     }
+    public function requestCity(User $user) {
+        $em=$this->getEntityManager();
+        $query = $em->createQuery('SELECT event FROM App\Entity\Event event WHERE event.ville=?1');
+       // $usercity=$user->getVille();
+        $query->setParameters(1, 'Paris');
+       return $query->getResult();
 
+
+    }
     // /**
     //  * @return Event[] Returns an array of Event objects
     //  */

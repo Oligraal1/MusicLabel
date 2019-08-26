@@ -47,9 +47,13 @@
     <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
 
     {{ include('event/_delete_form.html.twig') }}
+    <h3>Les concerts dans ma ville</h3>
+    
+    {# <p>{{ dump(city) }}</p> #}
     <p> Cordonnées de la ville : X = {{ ville[1] }} et Y = {{ ville[0] }}
     
      <div id="mapid" style="height:300px;width:800px"></div>
+
     <script>
     var mymap = L.map('mapid').setView([{{ ville[1] }}, {{ ville[0] }}], 25);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {

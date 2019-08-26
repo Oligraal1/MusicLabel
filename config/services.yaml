@@ -43,6 +43,11 @@ services:
         arguments:
             $mailer: '@mailer'
             $renderer: '@twig'
+        tags:
+            -{name: kernel.event, 
+            event: user.register, 
+            method: sendMailToUser, 
+            priority: -10 }    
                     
     Symfony\Bridge\Doctrine\Security\RememberMe\DoctrineTokenProvider: ~
      
