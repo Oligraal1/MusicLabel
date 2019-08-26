@@ -20,13 +20,21 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
     public function requestCity(User $user) {
+        $cityUser=$user->getVille();
         $em=$this->getEntityManager();
-        $query = $em->createQuery('SELECT event FROM App\Entity\Event event WHERE event.ville=?1');
-       // $usercity=$user->getVille();
-        $query->setParameters(1, 'Paris');
-       return $query->getResult();
 
+        $query = $em->createQuery
+            (
+            'SELECT e 
+            FROM App\Entity\Event e
+            #JOIN App\Entity\User u.ville#
+            WHERE e.ville= :ville'
+            )
+           ->setParameters('ville', $cityUser);
+            
 
+      return $query->getResult();
+      
     }
     // /**
     //  * @return Event[] Returns an array of Event objects

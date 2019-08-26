@@ -32,7 +32,7 @@
                
                
                 <td>
-                    <a class= "btn btn-secondary" href="{{ path('event_show', {'id': event.id}) }}">Voir la fiche de l'événement</a>
+                    <a class= "btn btn-dark" href="{{ path('event_show', {'id': event.id}) }}">Voir la fiche de l'événement</a>
                    {% if is_granted('ROLE_SUPER_ADMIN') %}
                     <a class= "btn btn-secondary" href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
                 {% endif %}

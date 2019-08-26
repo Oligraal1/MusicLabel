@@ -53,14 +53,21 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}", name="event_show", methods={"GET"})
      */
-    public function show(Event $event, \App\Local\Localisation $h): Response
+    public function show(Event $event, \App\Local\Localisation $h, User $user): Response
     {
         
+        $cities = $this->getDoctrine()
+                         ->getManager()
+                         ->getRepository(Event::class)
+                         ->requestCity($user);
+       foreach ($cities as $city) {
+            return $city->getVille();
+        }
         
         return $this->render('event/show.html.twig', [
             'event' => $event,
             'ville'=> $h->oneCity($event->getVille()),
-            
+            'city'=> $cities
         ]);
     }
 
