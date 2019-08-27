@@ -3,6 +3,11 @@
 {% block title %}Espace Membre{% endblock %}
 
 {% block body %}
+{% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
 <h2>Bienvenue dans l'espace Membre</h2>
 
 <p>Mettez à jour vos informations personnelles :</p>

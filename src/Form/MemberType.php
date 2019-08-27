@@ -18,8 +18,8 @@ class MemberType extends AbstractType
     {
         $builder
         ->add('email')
-        ->add('roles')
-        ->add('password')
+       // ->add('roles', ChoiceType::class, )
+       // ->add('password')
         ->add('nom')
         ->add('prenom')
         ->add('adresse')

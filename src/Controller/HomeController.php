@@ -21,7 +21,7 @@ use App\Form\SelectType;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/{_locale}/home", name="home")
      */
     public function index(Request $request, \App\Hello\HelloWorld $h)
     {

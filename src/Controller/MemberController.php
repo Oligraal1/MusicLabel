@@ -53,12 +53,11 @@ class MemberController extends AbstractController {
                 $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-    
+            $this->addFlash('success', 'Changement validé ! Knowledge is power!');
                 return $this->redirectToRoute('member_index');
+
             }
             
-    //var_dump($user);
-    $userConnect=$user->getId();
             return $this->render('member/edit.html.twig',
             [
                 'member' => $user,

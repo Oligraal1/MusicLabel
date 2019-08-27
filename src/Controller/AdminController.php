@@ -16,7 +16,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 /**
- * @Route("/admin")
+ * @Route("/admine")
  */
 
 class AdminController extends AbstractController {
@@ -28,4 +28,4 @@ class AdminController extends AbstractController {
         return $this->render('admin/index.html.twig', ['mainNavAdmin' => true, 'title' => 'Espace Admin']);
     }
 
-}
+}      

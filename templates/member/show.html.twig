@@ -42,8 +42,8 @@
 
     
 
-    <a href="{{ path('member_edit', {'id': member.id}) }}">Modifier mes infos</a>
-    <a class="btn btn-secondary" href="{{ path('member_index') }}">back to list</a>
+    <a class="btn btn-primary" href="{{ path('member_edit', {'id': member.id}) }}">Modifier mes infos</a>
+    <a class="btn btn-outline-secondary" href="{{ path('member_index') }}">back to list</a>
 
     {# {{ include('member/_delete_form.html.twig') }} #}
 {% endblock %}
