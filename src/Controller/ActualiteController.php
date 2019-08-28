@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/{_locale}/actualite")
+ * @Route("/actualite")
  */
 class ActualiteController extends AbstractController
 {
@@ -28,9 +28,10 @@ class ActualiteController extends AbstractController
     /**
      * @Route("/new", name="actualite_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
-    {
-        $actualite = new Actualite();
+    public function new(Request $request, Actualite $actualite): Response
+    {   
+        $this->denyAccessUnlessGranted('createActu', $actualite);
+        
         $form = $this->createForm(ActualiteType::class, $actualite);
         $form->handleRequest($request);
 
@@ -53,6 +54,7 @@ class ActualiteController extends AbstractController
      */
     public function show(Actualite $actualite): Response
     {
+    
         return $this->render('actualite/show.html.twig', [
             'actualite' => $actualite,
         ]);
@@ -63,6 +65,7 @@ class ActualiteController extends AbstractController
      */
     public function edit(Request $request, Actualite $actualite): Response
     {
+        $this->denyAccessUnlessGranted('editActu', $actualite);
         $form = $this->createForm(ActualiteType::class, $actualite);
         $form->handleRequest($request);
 
@@ -83,6 +86,7 @@ class ActualiteController extends AbstractController
      */
     public function delete(Request $request, Actualite $actualite): Response
     {
+        $this->denyAccessUnlessGranted('deleteActu', $actualite);
         if ($this->isCsrfTokenValid('delete'.$actualite->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($actualite);

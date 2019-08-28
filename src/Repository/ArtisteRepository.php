@@ -19,6 +19,7 @@ class ArtisteRepository extends ServiceEntityRepository
         parent::__construct($registry, Artiste::class);
     }
 
+    
     // /**
     //  * @return Artiste[] Returns an array of Artiste objects
     //  */

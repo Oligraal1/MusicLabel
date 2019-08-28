@@ -36,6 +36,19 @@ class EventRepository extends ServiceEntityRepository
       return $query->getResult();
       
     }
+    public function getNbEventinCity($cityUser) {
+ 
+        return $this->createQueryBuilder('e')
+ 
+                        ->select('COUNT(e)')
+                        ->where('e.ville = :ville')
+        ->setParameter('ville', $cityUser)
+ 
+                        ->getQuery()
+ 
+                        ->getSingleScalarResult();
+ 
+    }
     // /**
     //  * @return Event[] Returns an array of Event objects
     //  */

@@ -3,9 +3,9 @@
 {% block title %}Event{% endblock %}
 
 {% block body %}
-    <h2>Event</h2>
-    <h3>Les prochains concerts dans ma ville</h3>
-
+    <h2>{% trans %}Evenement{% endtrans %}</h2>
+    <h3>{% trans %}Les prochains concerts dans ma ville{% endtrans %}</h3>
+<p>{% trans with {events: NbCities } %} num_of_event {% endtrans %}</p>
 <ul>
 {% for citi in city %}
 <li><a href="{{ path('event_show', {'id': citi.id})}}"><strong> {{ citi.artisteId.nom }}</strong></a></li>
@@ -18,18 +18,18 @@
     {{ asset ('./image/concertP.jpg') | figure('That\'s my show', '1200px','600px','slam dans le public') | raw }}
 
 
-<h3>Tous les concerts</h3>
+<h3>{% trans %}Tous les concerts{% endtrans %}</h3>
     <table class="table table-bordered table-hover p-3 m-4">
         <thead class="thead-dark">
             <tr>
-                <th>Artiste</th>
-                <th>Type</th>
-                <th>Date_start</th>
+                <th>{% trans %}Artiste{% endtrans %}</th>
+                <th>{% trans %}Type{% endtrans %}</th>
+                <th>{% trans %}Date{% endtrans %}</th>
                 
-                <th>Lieu</th>
-                <th>Ville</th>
+                <th>{% trans %}Lieu{% endtrans %}</th>
+                <th>{% trans %}Ville{% endtrans %}</th>
                 
-                <th>actions</th>
+                <th>{% trans %}actions{% endtrans %}</th>
             </tr>
         </thead>
         <tbody>
@@ -44,9 +44,9 @@
                
                
                 <td>
-                    <a class= "btn btn-dark" href="{{ path('event_show', {'id': event.id}) }}">Voir la fiche de l'événement</a>
+                    <a class= "btn btn-dark" href="{{ path('event_show', {'id': event.id}) }}">{% trans %}Voir la fiche de l'événement{% endtrans %}</a>
                    {% if is_granted('ROLE_SUPER_ADMIN') %}
-                    <a class= "btn btn-secondary" href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
+                    <a class= "btn btn-secondary" href="{{ path('event_edit', {'id': event.id}) }}">{% trans %}Editer{% endtrans %}</a>
                 {% endif %}
                 </td>
             </tr>
@@ -58,7 +58,7 @@
         </tbody>
     </table>
 {% if is_granted('ROLE_SUPER_ADMIN') %}
-    <a class= "btn btn-secondary" href="{{ path('event_new') }}">Create new</a>
+    <a class= "btn btn-secondary" href="{{ path('event_new') }}">{% trans %}Créer un nouvel artiste{% endtrans %}</a>
     
      {% endif %}
 {% endblock %}

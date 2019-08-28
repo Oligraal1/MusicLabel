@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="P0rCfa2" resname="Actualite">
+        <source>Actualite</source>
+        <target>News</target>
+      </trans-unit>
+     
+      <trans-unit id="Eh7ugW5" resname="Evenement">
+        <source>Evenement</source>
+        <target>Event</target>
+      </trans-unit>
+      <trans-unit id="FIj5m13" resname="Les prochains concerts dans ma ville">
+        <source>Les prochains concerts dans ma ville</source>
+        <target>The next gigs in your town</target>
+      </trans-unit>
+      <trans-unit id="9d3QO27" resname="Tous les concerts">
+        <source>Tous les concerts</source>
+        <target>All gigs</target>
+      </trans-unit>
+      <trans-unit id="KWbBGtr" resname="Artiste">
+        <source>Artiste</source>
+        <target>Artist</target>
+      </trans-unit>
+      <trans-unit id="uq3fcPt" resname="Type">
+        <source>Type</source>
+        <target>Type</target>
+      </trans-unit>
+      <trans-unit id="mcQKtAW" resname="Date">
+        <source>Date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="Sd0BHdh" resname="Lieu">
+        <source>Lieu</source>
+        <target>Location</target>
+      </trans-unit>
+      <trans-unit id="Dr0lo0H" resname="Ville">
+        <source>Ville</source>
+        <target>Ciy</target>
+      </trans-unit>
+      <trans-unit id="Kw3N1AA" resname="actions">
+        <source>actions</source>
+        <target>actions</target>
+      </trans-unit>
+      <trans-unit id="A770nO2" resname="Voir la fiche de l'événement">
+        <source>Voir la fiche de l'événement</source>
+        <target>See the event</target>
+      </trans-unit>
+      <trans-unit id="IumSuye" resname="Editer">
+        <source>Editer</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="Fy6tQlf" resname="Créer un nouvel artiste">
+        <source>Créer un nouvel artiste</source>
+        <target>Create new artist</target>
+      </trans-unit>
+      <trans-unit id="9pQQso0" resname="Il y a">
+        <source>Il y a</source>
+        <target>You will find </target>
+      </trans-unit>
+      <trans-unit id="fWpz8Fv" resname="dans ta ville.">
+        <source>dans ta ville.</source>
+        <target> in your town.</target>
+      </trans-unit>
+      <trans-unit id="wHoMZi1" resname="concerts dans ta ville.">
+        <source>concerts dans ta ville.</source>
+        <target> gigs in your city.</target>
+      </trans-unit>
+      <trans-unit id="Iwm9_MN" resname="concerts">
+        <source>concerts</source>
+        <target> event</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

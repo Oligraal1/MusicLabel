@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <!--trans-unit id="FIj5m13" resname="Les prochains concerts dans ma ville">
+        <source>Les prochains concerts dans ma ville</source>
+        <target>The next event in town</target>
+      </trans-unit-->
+      <trans-unit id="num_of_event" resname="num_of_event">
+        <source>num_of_event</source>
+        <target>{events, plural, =0 {There are no event in your city:} one {There is one event in your city:} other {There are # events in your city:}}</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

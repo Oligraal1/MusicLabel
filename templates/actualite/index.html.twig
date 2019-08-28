@@ -4,7 +4,11 @@
 
 {% block body %}
     <h2>{% trans %}Actualite{% endtrans %}</h2>
-
+{% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
     <table class="table table-bordered table-hover">
         <thead class="thead-dark">
             <tr>
@@ -24,9 +28,9 @@
                 <td>{{ actualite.datePublication ? actualite.datePublication|date('d-m-Y') : '' }}</td>
                 <td>
                     <a href="{{ path('actualite_show', {'id': actualite.id}) }}">Voir l'actualité</a>
-                  {% if is_granted('ROLE_SUPER_ADMIN') %}
+                 {% if is_granted('ROLE_SUPER_ADMIN') %}
                     <a href="{{ path('actualite_edit', {'id': actualite.id}) }}">edit</a>
-               {% endif %}
+              {% endif %}
                 </td>
             </tr>
         {% else %}
