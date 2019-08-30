@@ -32,7 +32,7 @@ class SelectType extends AbstractType
                 new NotBlank()
             ],
         ])
-    ->add('Chercher', SubmitType::class);
+    ->add('chercher', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)

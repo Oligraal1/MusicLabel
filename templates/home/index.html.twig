@@ -49,7 +49,7 @@
         <div class="col-lg-4">
             <div class="row">
     <aside class="col-lg-12">
-        <h3>Les événements à venir</h3>
+        <h3><a id ="linkEvent" href="{{ path ('event_index') }}">Les événements à venir</a></h3>
         {{ asset ('./image/concert.webp') | figure('', '300px','150px','concert') | raw }}
         {% for event in events %}
         <ul>

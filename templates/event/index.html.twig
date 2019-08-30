@@ -5,6 +5,7 @@
 {% block body %}
     <h2>{% trans %}Evenement{% endtrans %}</h2>
     <h3>{% trans %}Les prochains concerts dans ma ville{% endtrans %}</h3>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %} 
 <p>{% trans with {events: NbCities } %} num_of_event {% endtrans %}</p>
 <ul>
 {% for citi in city %}
@@ -14,6 +15,9 @@
 <li>{{ citi.lieu }}</li>
 <li>{{ citi.ville }}</li>
 {% endfor %}
+{% else %}
+<p>Connectez-vous pour voir les événements dans votre ville.
+{% endif %}
 <ul>
     {{ asset ('./image/concertP.jpg') | figure('That\'s my show', '1200px','600px','slam dans le public') | raw }}
 

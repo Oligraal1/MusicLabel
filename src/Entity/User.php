@@ -60,17 +60,17 @@ class User implements UserInterface
      */
     private $phone;
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Streaming", mappedBy="id_users")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Streaming", mappedBy="id_user")
      */
     private $streamings;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Commande", mappedBy="id_users")
+     * @ORM\OneToMany(targetEntity="App\Entity\Commande", mappedBy="id_user")
      */
     private $commandes;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Actualite", mappedBy="id_users")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Actualite", mappedBy="id_user")
      */
     private $actualites;
 

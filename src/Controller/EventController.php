@@ -22,8 +22,8 @@ class EventController extends AbstractController
      */
     public function index(EventRepository $eventRepository, TranslatorInterface $translator): Response
     {   
-
-        
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+       
         $cityUser=$this->getUser()->getVille();
        
         $cities = $this->getDoctrine()
@@ -41,6 +41,13 @@ class EventController extends AbstractController
             'city'=> $cities,
             'NbCities'=>$NbCities,
             'messageEvents' => $messageEvents
+        ]);
+        }
+        return $this->render('event/index.html.twig', [
+            'events' => $eventRepository->findAll(), 
+           // 'city'=> $cities,
+            // 'NbCities'=>$NbCities,
+            // 'messageEvents' => $messageEvents
         ]);
 
     }

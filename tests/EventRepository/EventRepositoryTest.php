@@ -33,11 +33,12 @@ class EventRepositoryTest extends KernelTestCase
      *
      * @return void
      */
-    public function TestRequestCity()
+    public function testRequestCity()
     {
         $event = $this->entityManager
-            ->getRepository(Event::class)->requestCity('Paris');
-        $this->assertEquals($event);
+            ->getRepository(Event::class)
+            ->requestCity('Paris');
+        $this->assertEquals('Paris');
     }
     
 }
