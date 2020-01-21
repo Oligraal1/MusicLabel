@@ -51,6 +51,51 @@ class ArtisteController extends AbstractController
     }
 
     /**
+     * @Route("/style", name="artiste_style")
+     */
+   
+    public function chooseStyle(ArtisteRepository $artisteRepository, Request $request) {
+        
+     
+        $artistes =  $artisteRepository->findAll();
+        for ($i=0; $i < count($artistes) ; $i++) {
+            $styleFound =  $artistes[$i]->getStyle();
+            $styles[] = $styleFound;       
+        }
+
+    if($request->isMethod('post')){
+        foreach ($artistes as $artiste ) {
+                $styleAttribue[] = $request->request->get('chosenStyle');
+                dump($styleAttribue);
+                $idArtiste[] = $artiste->getNom();
+                dump($idArtiste);
+                $name= $request->request->get('name');
+               
+                // if($idArtiste== $name ){
+                foreach ($styleAttribue as $style) {
+                    $idArtiste = $artiste->getId();
+                    dump($style);
+                    die;
+                    $s[] = $artiste->setStyle($style);
+                        dump($s);
+                       
+                }
+               
+                // }
+                
+        }
+           
+    }
+       
+        return $this->render('artiste/style.html.twig', [
+            'artistes' =>$artistes,
+           'styles' => $styles,
+
+        ]);
+
+    }
+
+    /**
      * @Route("/{id}", name="artiste_show", methods={"GET"})
      */
     public function show(Artiste $artiste): Response

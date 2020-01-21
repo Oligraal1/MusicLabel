@@ -15,7 +15,7 @@ class ArtisteType extends AbstractType
             ->add('nom')
             ->add('pays')
             ->add('presentation')
-            ->add('style')
+            //->add('style')
         ;
     }
 

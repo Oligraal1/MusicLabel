@@ -41,7 +41,7 @@ class RegistrationController extends AbstractController
             //on active par défaut
             $user->setIsActive(true);
             $user->setRoles(["ROLE_USER"]);
-            if ($user->getEmail() == "ocoffineau@yahoo.fr") {
+            if ($user->getEmail() == "demo@admin.fr") {
                 $user->setRoles(['ROLE_SUPER_ADMIN']);
             }
 

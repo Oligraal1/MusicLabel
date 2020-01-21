@@ -6,8 +6,9 @@
     <h1>Edit Artiste</h1>
 
     {{ include('artiste/_form.html.twig', {'button_label': 'Update'}) }}
+<a class='btn btn-success' href="{{ path('artiste_style') }}">Choisir les styles</a>
 
     <a href="{{ path('artiste_index') }}">back to list</a>
-
+   
     {{ include('artiste/_delete_form.html.twig') }}
 {% endblock %}

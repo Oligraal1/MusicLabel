@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artiste style
+{% endblock %}
+
+{% block body %}
+	<h2>Style de l'artiste</h2>
+<form action="{{ path('artiste_style')}}" method='post'>
+
+	<table class="table">
+		<thead>
+			<tr>
+
+				<th>Nom</th>
+               
+{% for style in styles %}
+
+<th>{{ style }}</th>
+
+
+	
+{% endfor %}
+
+		</tr>
+		</thead>
+		<tbody>
+			{% for artiste in artistes %}
+				<tr>
+
+                    <td name="name">{{ artiste.nom }}</td>
+{% for style in styles %}
+                     
+<td><input type="checkbox" name='chosenStyle[]' value='{{ style }}'></td>
+
+
+{% endfor %}
+
+
+					{# <td>
+						<a href="{{ path('artiste_show', {'id': artiste.id}) }}">Voir la fiche artiste</a>
+						{% if is_granted('ROLE_SUPER_ADMIN') %}
+							<a href="{{ path('artiste_edit', {'id': artiste.id}) }}">edit</a>
+						{% endif %}
+					</td> #}
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+    <button type="submit">Enregistrer</button>
+</form>
+
+	{% if is_granted('ROLE_SUPER_ADMIN') %}
+		<a href="{{ path('artiste_new') }}">Create new</a>
+	{% endif %}
+
+{% endblock %}
+
